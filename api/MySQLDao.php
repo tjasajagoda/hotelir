@@ -34,11 +34,6 @@
 			return json_encode($rows);
 		}
 
-		public function getFromTableRaw($tableName) {
-			$sth = $this->conn->prepare('SELECT * FROM ' . $tableName);
-			$sth->execute();
-			return $sth->fetchAll(PDO::FETCH_ASSOC);
-		}
 
 		public function getFromTableById($tableName, $id) {
 			$sth = $this->conn->prepare('SELECT * FROM ' . $tableName . 'WHERE id = ' . $id);
@@ -53,6 +48,48 @@
 
 		//CUSTOM FUNCTIONS
 
-          
+        public function getStoritve($kategorijaId) {
+			$sth = $this->conn->prepare(
+				'SELECT * FROM Storitev WHERE Kategorija_id = ' . $kategorijaId
+			);
+			$sth->execute();
+
+			$rows = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+			$returnValue = array();
+
+			return json_encode($rows);
+		}
+
+		public function getKategorije($hotelId) {
+			$sth = $this->conn->prepare(
+				'SELECT * FROM Kategorija WHERE Hotel_id = ' . $hotelId
+			);
+			$sth->execute();
+
+			$rows = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+			$returnValue = array();
+
+			return json_encode($rows);
+		}
+
+		
+		public function addNarocilo($uporabnikId, $casStoritve) {
+			$time_stamp = date('Y-m-d H:i:s');
+			$sth = $this->conn->prepare(
+				'INSERT INTO Narocilo (timestamp, cas_storitve, Uporabnik_id)
+				VALUES (:time_stamp, :cas_storitve, :Uporabnik_id)'
+			);
+
+			$sth->bindParam(':time_stamp', $time_stamp, PDO::PARAM_STR);
+			$sth->bindParam(':cas_storitve', $casStoritve, PDO::PARAM_STR);
+			$sth->bindParam(':Uporabnik_id', $uporabnikId, PDO::PARAM_INT);
+
+			$sth->execute();
+			return $this->conn->lastInsertId();
+		}
+
+		
 	}
 ?>
