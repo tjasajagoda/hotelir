@@ -1,3 +1,9 @@
+<?php
+if(isset($_POST['submitBtn'])) {
+  require("api/checkSession.php");
+  
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +42,7 @@
   <div class="login-box-body">
     <p class="login-box-msg">Vpiši se v Hotelirja</p>
 
-    <form action="index2.html" method="post">
+    <form action="" method="post">
       <div class="form-group has-feedback">
         <input type="email" class="form-control" placeholder="Uporabniško ime">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -55,7 +61,7 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Vpiši me</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat" name="submitBtn">Vpiši me</button>
         </div>
         <!-- /.col -->
       </div>
