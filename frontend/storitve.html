@@ -28,8 +28,6 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -47,9 +45,9 @@
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>Hot</b></span>
+      <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Hotel</b>ir</span>
+      <span class="logo-lg"><b>Admin</b>LTE</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -300,7 +298,7 @@
         </div>
       </div>
       <!-- search form -->
-      <!-- <form action="#" method="get" class="sidebar-form">
+      <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
           <span class="input-group-btn">
@@ -308,12 +306,12 @@
                 </button>
               </span>
         </div>
-      </form> -->
+      </form>
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <!-- <li class="header">MAIN NAVIGATION</li> -->
-        <!-- <li>
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="active treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
@@ -324,8 +322,8 @@
             <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
-        </li> -->
-        <!-- <li class="treeview">
+        </li>
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i>
             <span>Layout Options</span>
@@ -339,31 +337,148 @@
             <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
             <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
           </ul>
-        </li> -->
-        <li >
-          <a href="#">
-            <i class="fa fa-shopping-basket"></i>
-            <span>Storitve</span>
+        </li>
+        <li>
+          <a href="pages/widgets.html">
+            <i class="fa fa-th"></i> <span>Widgets</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">new</small>
+            </span>
           </a>
         </li>
-        <li >
+        <li class="treeview">
           <a href="#">
-            <i class="fa fa-user"></i>
-            <span>Podatki o uporabniku</span>
+            <i class="fa fa-pie-chart"></i>
+            <span>Charts</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+            <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
+            <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
+            <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-laptop"></i>
+            <span>UI Elements</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
+            <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
+            <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
+            <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
+            <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
+            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Forms</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
+            <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
+            <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-table"></i> <span>Tables</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
+            <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="pages/calendar.html">
+            <i class="fa fa-calendar"></i> <span>Calendar</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-red">3</small>
+              <small class="label pull-right bg-blue">17</small>
+            </span>
           </a>
         </li>
-        <li >
-          <a href="#">
-            <i class="fa fa-building"></i>
-            <span>O hotelu</span>
+        <li>
+          <a href="pages/mailbox/mailbox.html">
+            <i class="fa fa-envelope"></i> <span>Mailbox</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-yellow">12</small>
+              <small class="label pull-right bg-green">16</small>
+              <small class="label pull-right bg-red">5</small>
+            </span>
           </a>
         </li>
-        <li >
+        <li class="treeview">
           <a href="#">
-            <i class="fa fa-info"></i>
-            <span>Kontakt</span>
+            <i class="fa fa-folder"></i> <span>Examples</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
+          <ul class="treeview-menu">
+            <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
+            <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
+            <li><a href="pages/examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
+            <li><a href="pages/examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
+            <li><a href="pages/examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
+            <li><a href="pages/examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
+            <li><a href="pages/examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
+            <li><a href="pages/examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
+            <li><a href="pages/examples/pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
+          </ul>
         </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-share"></i> <span>Multilevel</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-circle-o"></i> Level One
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                <li class="treeview">
+                  <a href="#"><i class="fa fa-circle-o"></i> Level Two
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+          </ul>
+        </li>
+        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+        <li class="header">LABELS</li>
+        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -373,187 +488,18 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Dashboard
-        <small>Control panel</small>
+      <h1 id="storitve">
       </h1>
-      <ol class="breadcrumb">
+      <!-- <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Dashboard</li>
-      </ol>
+      </ol> -->
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <!-- Small boxes (Stat box) -->
-      <div class="row">
-        <div class="box">
-          <div class="box-header">
-            <h3 class="box-title">Izberite vrsto storitve</h3>
-          </div>
-          <div id="seznamStoritev">
 
-
-          </div>
-          <!-- <div class="col-lg-3 col-xs-6">
-            <div class="small-box bg-aqua">
-              <div class="inner" >
-                <h3 id="imeStoritve">Hrana </h3>
-              </div>
-              <div class="icon">
-                <i class="fa fa-taxi"></i>
-              </div>
-              <a href="#" class="small-box-footer">
-                Več <i class="fa fa-arrow-circle-right"></i>
-              </a>
-            </div>
-          </div> -->
-
-
-
-
-
-
-          <!-- <div class="box-body" style="cursor: pointer;" onclick="location.href='storitve.html';">
-            <div class="col-md-3 col-sm-6 col-xs-12">
-              <div class="info-box">
-                <span class="info-box-icon bg-blue">
-                  <i class="fa fa-car"></i>
-                </span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Prevoz</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12" style="cursor: pointer;">
-              <div class="info-box">
-                <span class="info-box-icon bg-blue">
-                  <i class="fa fa-car"></i>
-                </span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Prevoz</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12"style="cursor: pointer;">
-              <div class="info-box">
-                <span class="info-box-icon bg-blue">
-                  <i class="fa fa-car"></i>
-                </span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Prevoz</span>
-                </div>
-              </div>
-            </div> -->
-            <!-- <div> -->
-
-
-
-<script >
-  $(document).ready(function(){
-
-    $.ajax({
-        type: 'GET',
-        url: '../api/getKategorije.php?hotelId=1',
-        // data: { 'facultyId': facultyId,
-        //         'studyTypeId': studyTypeId,
-        //         'programTypeId': programTypeId
-        //       },
-        success: function(json) {
-          var data = (JSON.parse(json))
-          var element = $("#seznamStoritev");
-          for (var i = 0; i < data.length; i++) {
-            var icon = "fa fa-taxi";
-            var template =" <div class=\"col-lg-3 col-xs-6\">\
-              <div class=\"small-box bg-aqua\">\
-                <div class=\"inner\" >\
-                  <h3 id=\"imeStoritve\">"+data[i].ime+"</h3>\
-                </div>\
-                <div class=\"icon\">\
-                  <i class=\""+ icon +"\"></i>\
-                </div>\
-                <a href=\"#\" class=\"small-box-footer\">\
-                  Več <i class=\"fa fa-arrow-circle-right\"></i>\
-                </a>\
-              </div>\
-            </div>";
-            element.append(template);
-          }
-        }
-    });
-  });
-  function loadServices() {
-    console.log("Loading study programs...");
-    // var url = 'storitve.html?kategorija='
-
-  };
-  // function getCategories(){
-  //   var url = 'storitve.html?kategorija='+;
-  //
-  //   $.ajax({
-  //       type: 'GET',
-  //       url: 'http://pecnik.si/hotelir/api/getStoritve.php?hotelId=1',
-  //       // data: { 'facultyId': facultyId,
-  //       //         'studyTypeId': studyTypeId,
-  //       //         'programTypeId': programTypeId
-  //       //       },
-  //       success: function(json) {
-  //         var data = (JSON.parse(json))
-  //         console.log(data)
-  //
-  //       }
-  //   });
-  // };
-</script>
-            <!-- <a class="btn btn-app">
-              <i class="fa fa-car"></i> Edit
-            </a>
-          </div>
-            <a class="btn btn-app">
-              <i class="fa fa-play"></i> Play
-            </a>
-            <a class="btn btn-app">
-              <i class="fa fa-repeat"></i> Repeat
-            </a>
-            <a class="btn btn-app">
-              <i class="fa fa-pause"></i> Pause
-            </a>
-            <input type="image" src="logg.png" name="saveForm" class="btTxt submit" id="saveForm" /> -->
-
-            <!-- <a class="btn btn-app">
-              <i class="fa fa-save"></i> Save
-            </a> -->
-            <!-- <a class="btn btn-app">
-              <span class="badge bg-yellow">3</span>
-              <i class="fa fa-bullhorn"></i> Notifications
-            </a>
-            <a class="btn btn-app">
-              <span class="badge bg-green">300</span>
-              <i class="fa fa-barcode"></i> Products
-            </a>
-            <a class="btn btn-app">
-              <span class="badge bg-purple">891</span>
-              <i class="fa fa-users"></i> Users
-            </a>
-            <a class="btn btn-app">
-              <span class="badge bg-teal">67</span>
-              <i class="fa fa-inbox"></i> Orders
-            </a>
-            <a class="btn btn-app">
-              <span class="badge bg-aqua">12</span>
-              <i class="fa fa-envelope"></i> Inbox
-            </a>
-            <a class="btn btn-app">
-              <span class="badge bg-red">531</span>
-              <i class="fa fa-heart-o"></i> Likes
-            </a> -->
-          </div>
-          <!-- /.box-body -->
-        </div>
-
-        <!-- ./col -->
-      </div>
-    </div>
+    </section>
     <!-- <div class="row">
 
       <div class="box box-info">
@@ -584,7 +530,7 @@
     </div> -->
       <!-- /.row (main row) -->
 
-    </section>
+
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
