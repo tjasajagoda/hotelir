@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+
+   <link rel="stylesheet" href="dist/css/style.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
@@ -480,7 +482,7 @@
           var data = (JSON.parse(json))
           var element = $("#seznamStoritev");
           for (var i = 0; i < data.length; i++) {
-            var icon = "fa fa-taxi";
+            var icon = data[i].slika;
             var template =" <div class=\"col-lg-3 col-xs-6\">\
               <div class=\"small-box bg-aqua\">\
                 <div class=\"inner\" >\
