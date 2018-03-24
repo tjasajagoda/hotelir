@@ -58,5 +58,16 @@
 
 			return json_encode($rows);
 		}
+
+		public function getKategorije($hotelId) {
+			$sth = $this->conn->prepare('SELECT * FROM Kategorija WHERE Hotel_id = ' . $hotelId);
+			$sth->execute();
+
+			$rows = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+			$returnValue = array();
+
+			return json_encode($rows);
+		}
 	}
 ?>
