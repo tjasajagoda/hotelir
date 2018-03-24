@@ -518,55 +518,55 @@
     </section>
 
     <script>
-    
+
       $(document).ready(function(){
-        var element = $("#seznamStoritev");
-        for (var i = 0; i < 5; i++) {
-          var icon = "fa fa-taxi";
-          var template =" <div class=\"col-lg-3 col-xs-6\">\
-            <div class=\"small-box bg-green\">\
-              <div class=\"inner\" >\
-                <h2 id=\"imeStoritve\">"+i+"</h2>\
-              </div>\
-              <div class=\"icon\">\
-                <i class=\""+ icon +"\"></i>\
-              </div>\
-              <a href=\"#\" class=\"small-box-footer\">\
-                Več <i class=\"fa fa-arrow-circle-right\"></i>\
-              </a>\
-            </div>\
-          </div>";
-          element.append(template);
-        }
-        // $.ajax({
-        //     type: 'GET',
-        //     url: '../api/getKategorije.php?hotelId=1',
-        //     // data: { 'facultyId': facultyId,
-        //     //         'studyTypeId': studyTypeId,
-        //     //         'programTypeId': programTypeId
-        //     //       },
-        //     success: function(json) {
-        //       var data = (JSON.parse(json))
-        //       var element = $("#seznamStoritev");
-        //       for (var i = 0; i < data.length; i++) {
-        //         var icon = "fa fa-taxi";
-        //         var template =" <div class=\"col-lg-3 col-xs-6\">\
-        //           <div class=\"small-box bg-aqua\">\
-        //             <div class=\"inner\" >\
-        //               <h2 id=\"imeStoritve\">"+data[i].ime+"</h2>\
-        //             </div>\
-        //             <div class=\"icon\">\
-        //               <i class=\""+ icon +"\"></i>\
-        //             </div>\
-        //             <a href=\"#\" class=\"small-box-footer\">\
-        //               Več <i class=\"fa fa-arrow-circle-right\"></i>\
-        //             </a>\
-        //           </div>\
-        //         </div>";
-        //         element.append(template);
-        //       }
-        //     }
-        // });
+        // var element = $("#seznamStoritev");
+        // for (var i = 0; i < 5; i++) {
+        //   var icon = "fa fa-taxi";
+        //   var template =" <div class=\"col-lg-3 col-xs-6\">\
+        //     <div class=\"small-box bg-green\">\
+        //       <div class=\"inner\" >\
+        //         <h2 id=\"imeStoritve\">"+i+"</h2>\
+        //       </div>\
+        //       <div class=\"icon\">\
+        //         <i class=\""+ icon +"\"></i>\
+        //       </div>\
+        //       <a href=\"#\" class=\"small-box-footer\">\
+        //         Več <i class=\"fa fa-arrow-circle-right\"></i>\
+        //       </a>\
+        //     </div>\
+        //   </div>";
+        //   element.append(template);
+        // }
+        $.ajax({
+            type: 'GET',
+            url: '../api/getKategorije.php?hotelId=1',
+            // data: { 'facultyId': facultyId,
+            //         'studyTypeId': studyTypeId,
+            //         'programTypeId': programTypeId
+            //       },
+            success: function(json) {
+              var data = (JSON.parse(json))
+              var element = $("#seznamStoritev");
+              for (var i = 0; i < data.length; i++) {
+                var icon = "fa fa-taxi";
+                var template =" <div class=\"col-lg-3 col-xs-6\">\
+                  <div class=\"small-box bg-aqua\">\
+                    <div class=\"inner\" >\
+                      <h2 id=\"imeStoritve\">"+data[i].ime+"</h2>\
+                    </div>\
+                    <div class=\"icon\">\
+                      <i class=\""+ icon +"\"></i>\
+                    </div>\
+                    <a href=\"#\" class=\"small-box-footer\">\
+                      Več <i class=\"fa fa-arrow-circle-right\"></i>\
+                    </a>\
+                  </div>\
+                </div>";
+                element.append(template);
+              }
+            }
+        });
       }
 
     );
