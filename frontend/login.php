@@ -1,9 +1,15 @@
 <?php
+if(isset($_COOKIE["novak_janez"])) {
+      header("Location: ./index.html"); /* Redirect browser */
+      exit();
+} 
+
 if(isset($_POST['submitBtn'])) {
-  require("api/checkSession.php");
-  
+  require("../api/checkCookie.php");
 }
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
