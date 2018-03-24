@@ -28,6 +28,8 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -488,13 +490,98 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1 id="storitve">
-      </h1>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="box box-widget widget-user-2">
+            <div class="widget-user-header bg-blue">
+              <div class="widget-user-image">
+                <img src="dist/img/user7-128x128.jpg" alt="User Avatar">
+              </div>
+              <h3 class="widget-user-username">Nadia Carmichael</h3>
+            </div>
+            <div class="box-footer no-padding">
+              <ul class="nav nav-stacked">
+                <li onClick="dodajIzdelek()"><a href="#">Dodaj izdelek <span id="clicks" class="pull-right badge bg-blue">0</span></a></li>
+                <li onclick="pocisti()"><a href="#">Odstrani izdelek</a></li>
+                <li><a href="#">Informacije o izdelku</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- /.widget-user -->
+        </div>
+
+        </div>
       <!-- <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Dashboard</li>
       </ol> -->
     </section>
+
+    <script>
+
+      $(document).ready(function(){
+        // var element = $("#seznamStoritev");
+        // for (var i = 0; i < 5; i++) {
+        //   var icon = "fa fa-taxi";
+        //   var template =" <div class=\"col-lg-3 col-xs-6\">\
+        //     <div class=\"small-box bg-green\">\
+        //       <div class=\"inner\" >\
+        //         <h2 id=\"imeStoritve\">"+i+"</h2>\
+        //       </div>\
+        //       <div class=\"icon\">\
+        //         <i class=\""+ icon +"\"></i>\
+        //       </div>\
+        //       <a href=\"#\" class=\"small-box-footer\">\
+        //         Več <i class=\"fa fa-arrow-circle-right\"></i>\
+        //       </a>\
+        //     </div>\
+        //   </div>";
+        //   element.append(template);
+        // }
+        $.ajax({
+            type: 'GET',
+            url: '../api/getKategorije.php?hotelId=1',
+            // data: { 'facultyId': facultyId,
+            //         'studyTypeId': studyTypeId,
+            //         'programTypeId': programTypeId
+            //       },
+            success: function(json) {
+              var data = (JSON.parse(json))
+              var element = $("#seznamStoritev");
+              for (var i = 0; i < data.length; i++) {
+                var icon = "fa fa-taxi";
+                var template =" <div class=\"col-lg-3 col-xs-6\">\
+                  <div class=\"small-box bg-aqua\">\
+                    <div class=\"inner\" >\
+                      <h2 id=\"imeStoritve\">"+data[i].ime+"</h2>\
+                    </div>\
+                    <div class=\"icon\">\
+                      <i class=\""+ icon +"\"></i>\
+                    </div>\
+                    <a href=\"#\" class=\"small-box-footer\">\
+                      Več <i class=\"fa fa-arrow-circle-right\"></i>\
+                    </a>\
+                  </div>\
+                </div>";
+                element.append(template);
+              }
+            }
+        });
+      }
+
+    );
+
+    var clicks = 0;
+    function dodajIzdelek() {
+        clicks += 1;
+        document.getElementById("clicks").innerHTML = clicks;
+    };
+
+    function pocisti() {
+        document.getElementById("clicks").innerHTML = 0;
+    };
+
+    </script>
 
     <!-- Main content -->
     <section class="content">
