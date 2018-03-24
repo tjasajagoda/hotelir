@@ -27,8 +27,11 @@
   <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -490,27 +493,43 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="box box-widget widget-user-2">
-            <div class="widget-user-header bg-blue">
-              <div class="widget-user-image">
-                <img src="dist/img/user7-128x128.jpg" alt="User Avatar">
+          <div class="row" id="seznamStoritev">
+            <!-- <div class="col-sm-4 col-md-3">
+              <div class="thumbnail">
+                <img src="dist/img/pancakes.jpg" style="height:200px!important;" >
+                <div class="caption">
+                  <h3>Ameriške palačinke </h3>
+                  <p>z gozdnimi sadeži</p>
+                  <p>Cena: <b>7€</b></p>
+                  <p><a href="#" class="btn btn-primary" role="button">Dodaj v košarico</a> <a href="#" class="btn btn-default" role="button">Podrobnosti</a></p>
+                </div>
               </div>
-              <h3 class="widget-user-username">Nadia Carmichael</h3>
             </div>
-            <div class="box-footer no-padding">
-              <ul class="nav nav-stacked">
-                <li onClick="dodajIzdelek()"><a href="#">Dodaj izdelek <span id="clicks" class="pull-right badge bg-blue">0</span></a></li>
-                <li onclick="pocisti()"><a href="#">Odstrani izdelek</a></li>
-                <li><a href="#">Informacije o izdelku</a></li>
-              </ul>
+            <div class="col-sm-4 col-md-3">
+              <div class="thumbnail">
+                <img src="dist/img/jajca.jpg" style="height:200px!important;">
+                <div class="caption">
+                  <h3>Jajca  </h3>
+                  <p>z slanino</p>
+                  <p>Cena: <b>6€</b></p>
+                  <p><a href="#" class="btn btn-primary" role="button">Dodaj v košarico</a> <a href="#" class="btn btn-default" role="button">Podrobnosti</a></p>
+                </div>
+              </div>
             </div>
+            <div class="col-sm-4 col-md-3">
+              <div class="thumbnail" value="3">
+                <img src="dist/img/cheesecake.jpg" style="height:200px!important;">
+                <div class="caption">
+                  <h3 >Cheesecake </h3>
+                  <p>z gozdnimi sadeži</p>
+                  <p>Cena: <b>5€</b></p>
+                  <p><a href="#" value="3" onclick="addItem(this)" class="btn btn-primary" role="button">Dodaj v košarico</a> <a href="#" class="btn btn-default" role="button">Podrobnosti</a></p>
+                </div>
+              </div>
+            </div> -->
           </div>
-          <!-- /.widget-user -->
-        </div>
 
-        </div>
+        <!-- </div> -->
       <!-- <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Dashboard</li>
@@ -520,49 +539,46 @@
     <script>
 
       $(document).ready(function(){
+        var oldItems = JSON.parse(localStorage.getItem('seznamStoritev')) || [];
+        var data= []
         // var element = $("#seznamStoritev");
         // for (var i = 0; i < 5; i++) {
         //   var icon = "fa fa-taxi";
-        //   var template =" <div class=\"col-lg-3 col-xs-6\">\
-        //     <div class=\"small-box bg-green\">\
-        //       <div class=\"inner\" >\
-        //         <h2 id=\"imeStoritve\">"+i+"</h2>\
-        //       </div>\
-        //       <div class=\"icon\">\
-        //         <i class=\""+ icon +"\"></i>\
-        //       </div>\
-        //       <a href=\"#\" class=\"small-box-footer\">\
-        //         Več <i class=\"fa fa-arrow-circle-right\"></i>\
-        //       </a>\
+        //   var template ="<div class=\"col-sm-4 col-md-3\">\
+        //   <div class=\"thumbnail\">\
+        //     <img src=\"dist/img/jajca.jpg\" style=\"height:200px!important;\">\
+        //     <div class=\"caption\">\
+        //       <h3>Jajca  </h3>\
+        //       <p>z slanino</p>\
+        //       <p>Cena: <b>6€</b></p>\
+        //       <p><a class=\"btn btn-primary\" onclick=\"addItem("+data[i].id+")\" role=\"button\">Dodaj v košarico</a>\
+        //        <a class=\"btn btn-default\" onclick=\"prikaziOpis("+data[i].opis+")\" role=\"button\">Podrobnosti</a></p>\
         //     </div>\
-        //   </div>";
+        //   </div>\
+        // </div>";
         //   element.append(template);
         // }
         $.ajax({
             type: 'GET',
-            url: '../api/getKategorije.php?hotelId=1',
-            // data: { 'facultyId': facultyId,
-            //         'studyTypeId': studyTypeId,
-            //         'programTypeId': programTypeId
-            //       },
+            url: '../api/getStoritve.php?kategorijeId='+location.search.split('kategorijaId=')[1],
             success: function(json) {
-              var data = (JSON.parse(json))
+              data = (JSON.parse(json))
+              console.log(data);
               var element = $("#seznamStoritev");
               for (var i = 0; i < data.length; i++) {
-                var icon = "fa fa-taxi";
-                var template =" <div class=\"col-lg-3 col-xs-6\">\
-                  <div class=\"small-box bg-aqua\">\
-                    <div class=\"inner\" >\
-                      <h2 id=\"imeStoritve\">"+data[i].ime+"</h2>\
-                    </div>\
-                    <div class=\"icon\">\
-                      <i class=\""+ icon +"\"></i>\
-                    </div>\
-                    <a href=\"#\" class=\"small-box-footer\">\
-                      Več <i class=\"fa fa-arrow-circle-right\"></i>\
-                    </a>\
+                // var icon = "fa fa-taxi";
+                var template ="<div class=\"col-sm-4 col-md-3\">\
+                <div class=\"thumbnail\">\
+                  <img src=\"dist/img/jajca.jpg\" style=\"height:200px!important;\">\
+                  <div class=\"caption\">\
+                    <h3>Jajca  </h3>\
+                    <p>z slanino</p>\
+                    <p>Cena: <b>6€</b></p>\
+                    <p><a class=\"btn btn-primary\" onclick=\"addItem("+data[i].id+")\" role=\"button\">Dodaj v košarico</a>\
+                     <a class=\"btn btn-default\" onclick=\"prikaziOpis("+data[i].opis+")\" role=\"button\">Podrobnosti</a></p>\
                   </div>\
-                </div>";
+                </div>\
+              </div>";
                 element.append(template);
               }
             }
@@ -570,7 +586,12 @@
       }
 
     );
-
+    function addItem(id){
+      console.log(id);
+    }
+    function prikaziOpis(opis){
+    console.log(opis);
+    }
     var clicks = 0;
     function dodajIzdelek() {
         clicks += 1;
@@ -578,6 +599,7 @@
     };
 
     function pocisti() {
+      var clicks = 0;
         document.getElementById("clicks").innerHTML = 0;
     };
 
