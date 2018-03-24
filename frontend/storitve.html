@@ -28,8 +28,6 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -490,146 +488,18 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Dashboard
-        <small>Control panel</small>
+      <h1 id="storitve">
       </h1>
-      <ol class="breadcrumb">
+      <!-- <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Dashboard</li>
-      </ol>
+      </ol> -->
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <!-- Small boxes (Stat box) -->
-      <div class="row">
-        <div class="box">
-          <div class="box-header">
-            <h3 class="box-title">Izberite vrsto storitve</h3>
-          </div>
-          <div class="box-body" style="cursor: pointer;" onclick="location.href='storitve.html';">
-            <div class="col-md-3 col-sm-6 col-xs-12">
-              <div class="info-box">
-                <span class="info-box-icon bg-blue">
-                  <i class="fa fa-car"></i>
-                </span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Prevoz</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12" style="cursor: pointer;">
-              <div class="info-box">
-                <span class="info-box-icon bg-blue">
-                  <i class="fa fa-car"></i>
-                </span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Prevoz</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12"style="cursor: pointer;">
-              <div class="info-box">
-                <span class="info-box-icon bg-blue">
-                  <i class="fa fa-car"></i>
-                </span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Prevoz</span>
-                </div>
-              </div>
-            </div>
-            <div>
 
-
-
-<script >
-  $(document).ready(function(){
-    $.ajax({
-        type: 'GET',
-        url: 'http://pecnik.si/hotelir/api/getKategorije.php?hotelId=1',
-        // data: { 'facultyId': facultyId,
-        //         'studyTypeId': studyTypeId,
-        //         'programTypeId': programTypeId
-        //       },
-        success: function(json) {
-          var data = (JSON.parse(json))
-          console.log(data)
-        }
-    });
-  });
-  function loadServices() {
-    console.log("Loading study programs...");
-    // var url = 'storitve.html?kategorija='
-
-  };
-  // function getCategories(){
-  //   var url = 'storitve.html?kategorija='+;
-  //
-  //   $.ajax({
-  //       type: 'GET',
-  //       url: 'http://pecnik.si/hotelir/api/getStoritve.php?hotelId=1',
-  //       // data: { 'facultyId': facultyId,
-  //       //         'studyTypeId': studyTypeId,
-  //       //         'programTypeId': programTypeId
-  //       //       },
-  //       success: function(json) {
-  //         var data = (JSON.parse(json))
-  //         console.log(data)
-  //
-  //       }
-  //   });
-  // };
-</script>
-            <!-- <a class="btn btn-app">
-              <i class="fa fa-car"></i> Edit
-            </a>
-          </div>
-            <a class="btn btn-app">
-              <i class="fa fa-play"></i> Play
-            </a>
-            <a class="btn btn-app">
-              <i class="fa fa-repeat"></i> Repeat
-            </a>
-            <a class="btn btn-app">
-              <i class="fa fa-pause"></i> Pause
-            </a>
-            <input type="image" src="logg.png" name="saveForm" class="btTxt submit" id="saveForm" /> -->
-
-            <!-- <a class="btn btn-app">
-              <i class="fa fa-save"></i> Save
-            </a> -->
-            <!-- <a class="btn btn-app">
-              <span class="badge bg-yellow">3</span>
-              <i class="fa fa-bullhorn"></i> Notifications
-            </a>
-            <a class="btn btn-app">
-              <span class="badge bg-green">300</span>
-              <i class="fa fa-barcode"></i> Products
-            </a>
-            <a class="btn btn-app">
-              <span class="badge bg-purple">891</span>
-              <i class="fa fa-users"></i> Users
-            </a>
-            <a class="btn btn-app">
-              <span class="badge bg-teal">67</span>
-              <i class="fa fa-inbox"></i> Orders
-            </a>
-            <a class="btn btn-app">
-              <span class="badge bg-aqua">12</span>
-              <i class="fa fa-envelope"></i> Inbox
-            </a>
-            <a class="btn btn-app">
-              <span class="badge bg-red">531</span>
-              <i class="fa fa-heart-o"></i> Likes
-            </a> -->
-          </div>
-          <!-- /.box-body -->
-        </div>
-
-        <!-- ./col -->
-      </div>
-    </div>
+    </section>
     <!-- <div class="row">
 
       <div class="box box-info">
@@ -660,7 +530,7 @@
     </div> -->
       <!-- /.row (main row) -->
 
-    </section>
+
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
