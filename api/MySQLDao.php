@@ -89,6 +89,19 @@
 			$sth->execute();
 			return $this->conn->lastInsertId();
 		}
+		
+		public function getNarocila($uporabnikId) {
+			$sth = $this->conn->prepare(
+				'SELECT * FROM Narocilo WHERE Uporabnik_id = ' . $uporabnikId
+			);
+			$sth->execute();
+
+			$rows = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+			$returnValue = array();
+
+			return json_encode($rows);
+		}
 
 		
 	}
