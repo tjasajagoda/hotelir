@@ -34,11 +34,6 @@
 			return json_encode($rows);
 		}
 
-		public function getFromTableRaw($tableName) {
-			$sth = $this->conn->prepare('SELECT * FROM ' . $tableName);
-			$sth->execute();
-			return $sth->fetchAll(PDO::FETCH_ASSOC);
-		}
 
 		public function getFromTableById($tableName, $id) {
 			$sth = $this->conn->prepare('SELECT * FROM ' . $tableName . 'WHERE id = ' . $id);
@@ -53,6 +48,15 @@
 
 		//CUSTOM FUNCTIONS
 
-          
+        public function getStoritve($hotelId) {
+			$sth = $this->conn->prepare('SELECT * FROM Storitev WHERE Hotel_id = ' . $hotelId);
+			$sth->execute();
+
+			$rows = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+			$returnValue = array();
+
+			return json_encode($rows);
+		}
 	}
 ?>
