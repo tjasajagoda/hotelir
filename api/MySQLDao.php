@@ -90,6 +90,37 @@
 			return $this->conn->lastInsertId();
 		}
 
-		
+		public function addStoritve($narociloId, $seznamStoritev) {
+			$insert = "INSERT INTO Narocilo_to_Storitev (Narocilo_id, Storitev_id, kolicina) VALUES ";
+
+			$json = json_decode($seznamStoritev, true);
+			if(is_array($json)){
+				$array_size = count($json);
+				$index = 1;
+				foreach($json as $key => $type){
+       				$storitevId = $type['storitevId'];
+       				$kolicina = $type['kolicina'];
+
+       				echo "Storitev: " . $storitevId . " - kolicina: " . $kolicina;
+       				$insert = $insert . "(" . $narociloId ."," . $storitevId.",".$kolicina.")";
+
+       				if($index == $array_size) {
+       					$insert = $insert . ";";
+       				}else{
+       					$insert = $insert . ",";
+       				}
+
+       				$index = $index + 1;
+				}
+			}
+			
+
+			echo $insert;
+
+			$sth = $this->conn->prepare($insert);
+
+			$sth->execute();
+		}
+
 	}
 ?>
