@@ -48,8 +48,8 @@
 
 		//CUSTOM FUNCTIONS
 
-        public function getStoritve($hotelId) {
-			$sth = $this->conn->prepare('SELECT * FROM Storitev WHERE Hotel_id = ' . $hotelId);
+        public function getStoritve($kategorijaId) {
+			$sth = $this->conn->prepare('SELECT * FROM Storitev WHERE Kategorija_id = ' . $kategorijaId);
 			$sth->execute();
 
 			$rows = $sth->fetchAll(PDO::FETCH_ASSOC);
