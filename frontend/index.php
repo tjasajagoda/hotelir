@@ -101,7 +101,7 @@ $data = $dao->getUporabnik("'" . $uporabnisko_ime . "'");
                           <script >
                             $(document).ready(function(){
                                $(function(){
-                                 
+
                                   $(".dropdown").on("show.bs.dropdown", function(event){
                                     var element = $("#dropdown-kosarica");
                                     element.empty();
@@ -123,17 +123,17 @@ $data = $dao->getUporabnik("'" . $uporabnisko_ime . "'");
                                         var idStoritve=storitve[i].storitevId;
                                          var kolicina = storitve[i].kolicina;
 
+                                         var prikaz = ime ;
+
 
 
                                         var template =
                                         "<li>\
-                                          <a>\
-                                            <div class=\"col-md-11\">\
-                                              <div>"+ime+"</div>\
-                                              <div>Količina: "+kolicina+"</div>\
-                                            </div>\
-                                            <a class=\"fa fa-trash\" onclick=\"deleteItem("+idStoritve+")\" role=\"button\"></a>\
-                                          </a>\
+                                            <a >\
+                                              <div class=\"col-md-11\" >"+prikaz+"</div>\
+                                              <span class=\"col-md-12 kosarica-item-kolicina\">Količina: "+kolicina+"</span>\
+                                              <span class=\"fa fa-trash\" onclick=\"deleteItem("+idStoritve+")\" role=\"button\"/>\
+                                            </a>\
                                         </li>";
 
 
