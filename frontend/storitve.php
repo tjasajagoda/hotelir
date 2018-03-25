@@ -1,7 +1,6 @@
 <?php
 require("../api/checkCookie.php");
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -606,10 +605,11 @@ require("../api/checkCookie.php");
         });
       });
 
-    function addItem(id){
+    function addItem(id, ime){
       var val = _.findWhere(oldItems, {storitevId: id});
       if(val === undefined){
         objekt = {
+          "ime":ime,
           "storitevId":id,
           "kolicina":1
         }
@@ -618,13 +618,14 @@ require("../api/checkCookie.php");
       else{
         for (var i = 0; i < oldItems.length; i++) {
           if(oldItems[i].id = id){
-            oldItems[i].kolicina = oldItems[i].kolicina +=1;
+            oldItems[i].kolicina = oldItems[i].kolicina + 1;
           }
         }
       }
       console.log(oldItems);
       localStorage.setItem('seznamStoritev', oldItems)
     }
+
     function prikaziOpis(opis){
     console.log(opis);
     }
