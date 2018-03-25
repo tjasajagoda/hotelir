@@ -577,7 +577,7 @@ require("../api/checkCookie.php");
                   <div class=\"caption\">\
                     <h4>"+data[i].ime+"  </h4>\
                     <p>Cena: <b>"+data[i].cena+"</b></p>\
-                    <p><a class=\"btn btn-primary\" onclick=\"addItem("+data[i].id+",\""+data[i].ime+"\")\" role=\"button\">Dodaj v košarico</a>\
+                    <p><a class=\"btn btn-primary\" onclick=\"addItem("+data[i].id+",'" +data[i].ime+"')\" role=\"button\">Dodaj v košarico</a>\
                      <a class=\"btn btn-default\" onclick=\"prikaziOpis("+data[i].opis+")\" role=\"button\">Podrobnosti</a></p>\
                   </div>\
                 </div>\
@@ -592,7 +592,7 @@ require("../api/checkCookie.php");
       console.log(id,ime);
       var val = _.findWhere(oldItems, {storitevId: id});
       if(val === undefined){
-        objekt = {
+        var objekt = {
           "ime":ime,
           "storitevId":id,
           "kolicina":1
