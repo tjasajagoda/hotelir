@@ -1,5 +1,11 @@
 <?php
 require("../api/checkCookie.php");
+
+$dao = new MySQLDao();
+$uporabnisko_ime = $_COOKIE['hash'];
+$data = $dao->getUporabnik("'" . $uporabnisko_ime . "'");
+
+  $arr = json_decode($data, true)[0];
 ?>
 
 <!DOCTYPE html>
@@ -7,7 +13,7 @@ require("../api/checkCookie.php");
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Dashboard</title>
+  <title>Hotelir</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -51,7 +57,7 @@ require("../api/checkCookie.php");
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index.html" class="logo">
+    <a href="index.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>Hot</b></span>
       <!-- logo for regular state and mobile devices -->
@@ -171,18 +177,7 @@ require("../api/checkCookie.php");
               </li>
             </ul>
           </li> -->
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              <i class="fa fa-gears"></i>
-            </a>
-            <ul class="dropdown-menu">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Profile</a></li>
-              <!-- <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li> -->
-              <li role="presentation" class="divider"></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sign out</a></li>
-            </ul>
-          </li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Odjavi se</a></li>
         </ul>
       </div>
     </nav>
@@ -197,8 +192,8 @@ require("../api/checkCookie.php");
           <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <p><?php echo $arr['ime'] . " " . $arr['priimek']; ?></p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Dosegljiv</a>
         </div>
       </div>
       <!-- search form -->
@@ -243,25 +238,25 @@ require("../api/checkCookie.php");
           </ul>
         </li> -->
         <li >
-          <a href="#">
+          <a href="storitve.php">
             <i class="fa fa-shopping-basket"></i>
             <span>Storitve</span>
           </a>
         </li>
         <li >
-          <a href="#">
+          <a href="profile.php">
             <i class="fa fa-user"></i>
             <span>Podatki o uporabniku</span>
           </a>
         </li>
         <li >
-          <a href="#">
+          <a href="hotel.php">
             <i class="fa fa-building"></i>
             <span>O hotelu</span>
           </a>
         </li>
         <li >
-          <a href="#">
+          <a href="contact.php">
             <i class="fa fa-info"></i>
             <span>Kontakt</span>
           </a>
@@ -274,16 +269,6 @@ require("../api/checkCookie.php");
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Dashboard
-        <small>Control panel</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
-    </section>
 
     <!-- Main content -->
     <section class="content">
@@ -488,9 +473,9 @@ require("../api/checkCookie.php");
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
+      <b>Skupina Hotelir (Startup Weekend)</b>
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+    <strong>Copyright &copy; 2018</strong> All rights
     reserved.
   </footer>
 
