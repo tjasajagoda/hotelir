@@ -20,12 +20,12 @@ else {
 		header("Location: ./login.php"); /* Redirect browser */
 		exit();
 	}
-
+/*
 	else {
-		header("Location: ./index.php"); /* Redirect browser */
+		header("Location: ./index.php");
 		exit();
 	}
-
+*/
 	
 }
 
