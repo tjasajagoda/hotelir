@@ -87,6 +87,19 @@
 			return json_encode($rows);
 		}
 
+		public function getHotel($hotelId) {
+			$sth = $this->conn->prepare(
+				'SELECT * FROM Hotel WHERE id = ' . $hotelId
+			);
+			$sth->execute();
+
+			$rows = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+			$returnValue = array();
+
+			return json_encode($rows);
+		}
+
 		
 		public function addNarocilo($uporabnikId, $casStoritve) {
 			$time_stamp = date('Y-m-d H:i:s');
