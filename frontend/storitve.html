@@ -518,7 +518,7 @@
                 </div>
               </div>
             </div>-->
-            <div class="col-sm-4 col-md-3">
+            <!-- <div class="col-sm-4 col-md-3">
               <div class="thumbnail" value="3">
                 <img src="dist/img/cheesecake.jpg" style="height:200px!important;">
                 <div class="caption">
@@ -528,7 +528,7 @@
                   <p><a href="#" value="3" onclick="addItem(3)" class="btn btn-primary" role="button">Dodaj v košarico</a> <a href="#" class="btn btn-default" role="button">Podrobnosti</a></p>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
 
         <!-- </div> -->
@@ -541,8 +541,13 @@
     <script>
       var oldItems = []
       $(document).ready(function(){
-        oldItems = JSON.parse(localStorage.getItem('seznamStoritev')) || (localStorage.setItem('seznamStoritev',[]) && JSON.parse(localStorage.getItem('seznamStoritev'))) ;
-        var data= []
+        if(localStorage.getItem('seznamStoritev') !== undefined){
+          oldItems = JSON.parse(localStorage.getItem('seznamStoritev'))
+        }
+        else{
+          localStorage.setItem('seznamStoritev',[]);
+        }
+        var data = []
         // var element = $("#seznamStoritev");
         // for (var i = 0; i < 5; i++) {
         //   var icon = "fa fa-taxi";
