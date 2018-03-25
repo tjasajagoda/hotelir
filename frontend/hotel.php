@@ -287,47 +287,43 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Kontakt
+        O hotelu
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Domov</a></li>
-        <li class="active">Kontakt</li>
+        <li class="active">O hotelu</li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="invoice">
     <div>
-          <div class="box box-primary">
-            <!-- /.box-header -->
-            <div class="box-body">
-              <div class="form-group">
-                <input class="form-control" placeholder="Zadeva:">
-              </div>
-              <div class="form-group">
-                    <textarea id="compose-textarea" class="form-control" style="height: 300px">
-                      
-                    </textarea>
-              </div>
-              <div class="form-group">
-                <div class="btn btn-default btn-file">
-                  <i class="fa fa-paperclip"></i> Dodaj priponko
-                  <input type="file" name="attachment">
-                </div>
-                <p class="help-block">Največja dovoljena velikost je: 32MB</p>
-              </div>
+    <div class="box box-primary">
+            <div class="box-body box-profile">
+
+              <h3 class="profile-username text-center"><?php echo $arrHotel['ime']; ?></h3>
+
+              <p class="text-muted text-center"><?php echo $arrHotel['lokacija']; ?></p>
+              <p class="text-muted text-center"><?php echo $arrHotel['drzava']; ?></p>
+
+              <center><img class="img-responsive" width="300" src="images/slon.png" alt="User profile picture"></center><br>
+              <div style="width: 100%"><iframe width="100%" height="600" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;coord=46.052569, 14.503886999999963&amp;q=Hotel%20Slon+(Hotel%20Slon)&amp;ie=UTF8&amp;t=k&amp;z=18&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a href="https://www.maps.ie/create-google-map/">Embed Google Map</a></iframe></div><br />
+              <br>
+              Best Western Premier Hotel Slon se nahaja v samem središču Ljubljane, le nekaj korakov od starega mestnega jedra, Ljubljanskega gradu in vseh pomembnih mestnih znamenitosti.
+
+Ta sodoben hotel s 4 zvezdicami superior premore 170 udobnih in kakovostno opremljenih sob. Superior Deluxe sobe, Deluxe sobe in Suite nudijo luksuzno nastanitev tudi za najbolj zahtevne goste.
+Spa & Fitness ponuja najsodobnejša Technogym fitnes orodja. Odprt je štiriindvajset ur na dan in zagotavlja optimalno vadbo z utežmi in kardio napravami kot tudi sproščujoče savne s tropskimi tuši. Masažni studio nudi širok izbor tajskih masaž, ki krepijo imunski sistem.
+
+Best Western Premier Hotel Slon je prilagojen poslovnim gostom in nudi 5 vsestranskih konferenčnih dvoran, ki se med seboj združujejo ter tako prilagajajo različnim zahtevam organizatorjev. V dvoranah nudimo tudi delovne zajtrke, poslovna kosila in svečane večerje za  sprejeme, zabave in prestižne poroke.
+
+Restavracija Slon 1552 je priljubljena točka Ljubljančanov in njihovih gostov in je tudi znana po svoji odlični kuhinji. V atraktivnem ambientu s pogledom na ljubljanske ulice, gostom postrežemo sodobne slovenske in mednarodne jedi, kot tudi širok izbor vrhunskih vin.
+
+Za hotelske goste, nudimo valet parkiranje v bližnji garaži kamor avto odpelje naše prijazno osebje.
+
+Best Western Premier Hotel Slon ostaja hiša z več kot 460-letno tradicijo, ki na elitni lokaciji svoje goste razvaja s prijetno namestitvijo in odlično kulinariko. Vljudno vabljeni!
             </div>
             <!-- /.box-body -->
-            <div class="box-footer">
-              <div class="pull-right">
-                <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Shrani med osnutke</button>
-                <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Pošlji</button>
-              </div>
-              <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> Prekliči</button>
-            </div>
-            <!-- /.box-footer -->
           </div>
-          <!-- /. box -->
         </div>
     </section>
 
