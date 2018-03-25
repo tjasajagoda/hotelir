@@ -543,7 +543,7 @@ require("../api/checkCookie.php");
 
     <script>
       var oldItems = []
-      $(document).ready(function(){
+      $(document).ready(function()){
         if(localStorage.getItem('seznamStoritev') != null){
           // if (localStorage.getItem('seznamStoritev'))
           try {
@@ -586,7 +586,7 @@ require("../api/checkCookie.php");
               }
             }
         });
-      });
+      };
 
     function addItem(id, ime){
       console.log(id,ime);
