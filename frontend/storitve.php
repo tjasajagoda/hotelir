@@ -593,10 +593,9 @@ require("../api/checkCookie.php");
                 <div class=\"thumbnail\">\
                   <img src=\".."+data[i].slika+"\" style=\"height:200px!important;\">\
                   <div class=\"caption\">\
-                    <h3>"+data[i].ime+"  </h3>\
-                    <p>z slanino</p>\
+                    <h4>"+data[i].ime+"  </h4>\
                     <p>Cena: <b>"+data[i].cena+"</b></p>\
-                    <p><a class=\"btn btn-primary\" onclick=\"addItem("+data[i].id+")\" role=\"button\">Dodaj v košarico</a>\
+                    <p><a class=\"btn btn-primary\" onclick=\"addItem("+data[i].id+","+data[i].ime+")\" role=\"button\">Dodaj v košarico</a>\
                      <a class=\"btn btn-default\" onclick=\"prikaziOpis("+data[i].opis+")\" role=\"button\">Podrobnosti</a></p>\
                   </div>\
                 </div>\
@@ -623,6 +622,7 @@ require("../api/checkCookie.php");
           }
         }
       }
+      console.log(oldItems);
       localStorage.setItem('seznamStoritev', oldItems)
     }
     function prikaziOpis(opis){
