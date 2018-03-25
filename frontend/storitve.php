@@ -23,6 +23,8 @@ $dao = new MySQLDao();
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+
+   <link rel="stylesheet" href="dist/css/style.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
@@ -36,13 +38,10 @@ $dao = new MySQLDao();
   <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js" type="text/javascript"></script>
-
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -61,7 +60,7 @@ $dao = new MySQLDao();
     <!-- Logo -->
     <a href="index.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-     <span class="logo-mini"><b>Hot</b></span>
+      <span class="logo-mini"><b>Hot</b></span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Hotel</b>ir</span>
     </a>
@@ -80,6 +79,7 @@ $dao = new MySQLDao();
               <i class="fa fa-shopping-basket"></i>
 
               <script >
+               
                 var storitve = JSON.parse(localStorage.getItem('seznamStoritev'));
                 var st = storitve.length;
                  var element = $("#kosarica-st");
@@ -87,7 +87,6 @@ $dao = new MySQLDao();
                   var template="<span class=\"label label-warning\" >"+st+"</span>";
                   element.append(template);
                 }
-
               </script>
             </a>
             <ul class="dropdown-menu">
@@ -101,18 +100,7 @@ $dao = new MySQLDao();
                           <script >
                             $(document).ready(function(){
                                $(function(){
-                                 objekt = {
-                                  "storitevId":1,
-                                  "kolicina":1
-                                };
-                                var sez = [];
-                                sez.push(objekt);
-                                objekt1 = {
-                                  "storitevId":2,
-                                  "kolicina":3
-                                };
-                                sez.push(objekt1);
-                                localStorage.setItem('seznamStoritev',JSON.stringify(sez));
+
                                   $(".dropdown").on("show.bs.dropdown", function(event){
                                     var element = $("#dropdown-kosarica");
                                     element.empty();
@@ -130,22 +118,21 @@ $dao = new MySQLDao();
                                         element.append(template);
                                     }else {
                                       for (var i = 0; i < storitve.length; i++) {
-                                        //var idStoritve = storitve[i].storitevId;
-                                        var idStoritve="Vino"
+                                        var ime = storitve[i].ime;
+                                        var idStoritve=storitve[i].storitevId;
                                          var kolicina = storitve[i].kolicina;
+
+                                         var prikaz = ime ;
 
 
 
                                         var template =
                                         "<li>\
-                                          <a>\
-                                            <div class=\"col-md-11\">\
-                                              <div>"+idStoritve+"</div>\
-                                              <div>Količina: "+kolicina+"</div>\
-                                            </div>\
-                                            <button class=\"fa fa-trash\" >\
-                                            </button>\
-                                          </a>\
+                                            <a >\
+                                              <div class=\"col-md-11\" >"+prikaz+"</div>\
+                                              <span class=\"col-md-12 kosarica-item-kolicina\">Količina: "+kolicina+"</span>\
+                                              <span class=\"fa fa-trash\" onclick=\"deleteItem("+idStoritve+")\" role=\"button\"/>\
+                                            </a>\
                                         </li>";
 
 
@@ -156,9 +143,22 @@ $dao = new MySQLDao();
                                       }
                                     }
                                   });
-                               })
+                               });
+
+
                           });
-                          </script>
+
+                            function deleteItem(idStoritve){
+                              //alert("click");
+                              var oldItems = JSON.parse(localStorage.getItem('seznamStoritev'));
+                              //var val = _.findWhere(oldItems, {storitevId: idStoritve});
+                              var arr = _.without(oldItems, _.findWhere(oldItems, {storitevId: idStoritve}));
+                              localStorage.setItem('seznamStoritev', JSON.stringify(arr));
+                              refreshCount();
+                            }
+                            
+                          </script>                  
+
                       </ul>
                     </li>
                   </ul>
@@ -341,11 +341,11 @@ $dao = new MySQLDao();
                 data = []
               }
               // data = (JSON.parse(json));
-              console.log(data);
+             
               var element = $("#seznamStoritev");
               for (var i = 0; i < data.length; i++) {
                 // var icon = "fa fa-taxi";
-                var template ="<div class=\"col-sm-4 col-md-3\">\
+                var template ="<div class=\"col-sm-3 col-md-4\">\
                 <div class=\"thumbnail\">\
                   <img src=\".."+data[i].slika+"\" style=\"height:200px!important;\">\
                   <div class=\"caption\">\
