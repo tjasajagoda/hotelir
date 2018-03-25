@@ -528,7 +528,7 @@ Best Western Premier Hotel Slon ostaja hiša z več kot 460-letno tradicijo, ki 
           </ul>
         </li> -->
         <li >
-          <a href="storitve.php">
+          <a href="index.php">
             <i class="fa fa-shopping-basket"></i>
             <span>Storitve</span>
           </a>
