@@ -542,6 +542,7 @@
       var oldItems = []
       $(document).ready(function(){
         if(localStorage.getItem('seznamStoritev') !== undefined){
+          console.log(localStorage.getItem('seznamStoritev'));
           oldItems = JSON.parse(localStorage.getItem('seznamStoritev'))
         }
         else{
