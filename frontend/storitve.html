@@ -32,6 +32,8 @@
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js" type="text/javascript"></script>
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -515,7 +517,7 @@
                   <p><a href="#" class="btn btn-primary" role="button">Dodaj v košarico</a> <a href="#" class="btn btn-default" role="button">Podrobnosti</a></p>
                 </div>
               </div>
-            </div>
+            </div>-->
             <div class="col-sm-4 col-md-3">
               <div class="thumbnail" value="3">
                 <img src="dist/img/cheesecake.jpg" style="height:200px!important;">
@@ -523,10 +525,10 @@
                   <h3 >Cheesecake </h3>
                   <p>z gozdnimi sadeži</p>
                   <p>Cena: <b>5€</b></p>
-                  <p><a href="#" value="3" onclick="addItem(this)" class="btn btn-primary" role="button">Dodaj v košarico</a> <a href="#" class="btn btn-default" role="button">Podrobnosti</a></p>
+                  <p><a href="#" value="3" onclick="addItem(3)" class="btn btn-primary" role="button">Dodaj v košarico</a> <a href="#" class="btn btn-default" role="button">Podrobnosti</a></p>
                 </div>
               </div>
-            </div> -->
+            </div>
           </div>
 
         <!-- </div> -->
@@ -537,9 +539,9 @@
     </section>
 
     <script>
-
+      var oldItems = []
       $(document).ready(function(){
-        var oldItems = JSON.parse(localStorage.getItem('seznamStoritev')) || [];
+        oldItems = JSON.parse(localStorage.getItem('seznamStoritev')) || (localStorage.setItem('seznamStoritev',[]) && JSON.parse(localStorage.getItem('seznamStoritev'))) ;
         var data= []
         // var element = $("#seznamStoritev");
         // for (var i = 0; i < 5; i++) {
@@ -562,18 +564,18 @@
             type: 'GET',
             url: '../api/getStoritve.php?kategorijaId='+location.search.split('kategorijaId=')[1],
             success: function(json) {
-              data = (JSON.parse(json))
+              data = (JSON.parse(json));
               console.log(data);
               var element = $("#seznamStoritev");
               for (var i = 0; i < data.length; i++) {
                 // var icon = "fa fa-taxi";
                 var template ="<div class=\"col-sm-4 col-md-3\">\
                 <div class=\"thumbnail\">\
-                  <img src=\"dist/img/jajca.jpg\" style=\"height:200px!important;\">\
+                  <img src=\".."+data[i].slika+"\" style=\"height:200px!important;\">\
                   <div class=\"caption\">\
-                    <h3>Jajca  </h3>\
+                    <h3>"+data[i].ime+"  </h3>\
                     <p>z slanino</p>\
-                    <p>Cena: <b>6€</b></p>\
+                    <p>Cena: <b>"+data[i].cena+"</b></p>\
                     <p><a class=\"btn btn-primary\" onclick=\"addItem("+data[i].id+")\" role=\"button\">Dodaj v košarico</a>\
                      <a class=\"btn btn-default\" onclick=\"prikaziOpis("+data[i].opis+")\" role=\"button\">Podrobnosti</a></p>\
                   </div>\
@@ -583,25 +585,29 @@
               }
             }
         });
-      }
+      });
 
-    );
     function addItem(id){
-      console.log(id);
+      var val = _.findWhere(oldItems, {storitevId: id});
+      if(val === undefined){
+        objekt = {
+          "storitevId":id,
+          "kolicina":1
+        }
+        oldItems.push(objekt);
+      }
+      else{
+        for (var i = 0; i < oldItems.length; i++) {
+          if(oldItems[i].id = id){
+            oldItems[i].kolicina = oldItems[i].kolicina +=1;
+          }
+        }
+      }
+      localStorage.setItem('seznamStoritev', oldItems)
     }
     function prikaziOpis(opis){
     console.log(opis);
     }
-    var clicks = 0;
-    function dodajIzdelek() {
-        clicks += 1;
-        document.getElementById("clicks").innerHTML = clicks;
-    };
-
-    function pocisti() {
-      var clicks = 0;
-        document.getElementById("clicks").innerHTML = 0;
-    };
 
     </script>
 
