@@ -65,7 +65,7 @@ require("../api/checkCookie.php");
       </a>
 
       <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">          
+        <ul class="nav navbar-nav">
           <!-- Notifications: style can be found in dropdown.less -->
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="kosarica-st">
@@ -79,8 +79,8 @@ require("../api/checkCookie.php");
                   var template="<span class=\"label label-warning\" >"+st+"</span>";
                   element.append(template);
                 }
-               
-              </script>              
+
+              </script>
             </a>
             <ul class="dropdown-menu">
               <li class="header">Košarica</li>
@@ -109,10 +109,10 @@ require("../api/checkCookie.php");
                                     var element = $("#dropdown-kosarica");
                                     element.empty();
                                     var storitve = JSON.parse(localStorage.getItem('seznamStoritev'))
-                                    
+
 
                                     if(storitve == null){
-                                      var template = 
+                                      var template =
                                         "<li>\
                                           <a href=\"#\">\
                                           <i ></i>Košarica je prazna!\
@@ -125,10 +125,10 @@ require("../api/checkCookie.php");
                                         //var idStoritve = storitve[i].storitevId;
                                         var idStoritve="Vino"
                                          var kolicina = storitve[i].kolicina;
-                                     
 
 
-                                        var template = 
+
+                                        var template =
                                         "<li>\
                                           <a>\
                                             <div class=\"col-md-11\">\
@@ -140,7 +140,7 @@ require("../api/checkCookie.php");
                                           </a>\
                                         </li>";
 
-                                        
+
                                         element.append(template);
 
 
@@ -150,7 +150,7 @@ require("../api/checkCookie.php");
                                   });
                                })
                           });
-                          </script>                  
+                          </script>
                       </ul>
                     </li>
                   </ul>
@@ -158,7 +158,7 @@ require("../api/checkCookie.php");
                  </ul>
                 </li>
           <!-- Tasks: style can be found in dropdown.less -->
-          
+
           <!-- User Account: style can be found in dropdown.less -->
           <!-- Control Sidebar Toggle Button -->
           <!-- <li>
@@ -391,7 +391,7 @@ require("../api/checkCookie.php");
                 <div class=\"icon\">\
                   <i class=\""+ icon +"\"></i>\
                 </div>\
-                <a href=\"storitve.html?kategorijaId="+data[i].id+"\" class=\"small-box-footer\">\
+                <a href=\"storitve.php?kategorijaId="+data[i].id+"\" class=\"small-box-footer\">\
                   Več <i class=\"fa fa-arrow-circle-right\"></i>\
                 </a>\
               </div>\
