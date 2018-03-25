@@ -241,7 +241,7 @@ $data = $dao->getUporabnik("'" . $uporabnisko_ime . "'");
           </ul>
         </li> -->
         <li >
-          <a href="storitve.php">
+          <a href="index.php">
             <i class="fa fa-shopping-basket"></i>
             <span>Storitve</span>
           </a>
