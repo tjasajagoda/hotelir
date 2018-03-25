@@ -118,7 +118,7 @@
 		
 		public function getNarocila($uporabnikId) {
 			$sth = $this->conn->prepare(
-				'SELECT * FROM Narocilo WHERE Uporabnik_id = ' . $uporabnikId
+				"SELECT ns.Narocilo_id, s.ime AS 'ime_storitve', s.cena, k.ime AS 'ime_kategorije', k.slika AS 'slika_kategorije', n.timestamp AS 'cas_narocila' FROM Narocilo_to_Storitev ns INNER JOIN Storitev s ON ns.Storitev_id = s.id INNER JOIN Narocilo n ON ns.Narocilo_id = n.id INNER JOIN Kategorija k ON s.Kategorija_id = k.id WHERE Uporabnik_id=" . $uporabnikId
 			);
 			$sth->execute();
 

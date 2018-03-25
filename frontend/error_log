@@ -2,3 +2,4 @@
 [24-Mar-2018 17:34:47 Europe/Ljubljana] PHP Fatal error:  Cannot use object of type stdClass as array in /home/pametnih/public_html/matejpecnik.com/hotelir/api/checkCookie.php on line 17
 [24-Mar-2018 17:35:01 Europe/Ljubljana] PHP Fatal error:  Cannot use object of type stdClass as array in /home/pametnih/public_html/matejpecnik.com/hotelir/api/checkCookie.php on line 17
 [24-Mar-2018 17:35:34 Europe/Ljubljana] PHP Fatal error:  Cannot use object of type stdClass as array in /home/pametnih/public_html/matejpecnik.com/hotelir/api/checkCookie.php on line 17
+[25-Mar-2018 11:19:06 Europe/Ljubljana] PHP Fatal error:  Call to undefined function length() in /home/pametnih/public_html/matejpecnik.com/hotelir/frontend/profile.php on line 18
