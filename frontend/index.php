@@ -101,18 +101,7 @@ $data = $dao->getUporabnik("'" . $uporabnisko_ime . "'");
                           <script >
                             $(document).ready(function(){
                                $(function(){
-                                 /*objekt = {
-                                  "storitevId":1,
-                                  "kolicina":1
-                                };
-                                var sez = [];
-                                sez.push(objekt);
-                                objekt1 = {
-                                  "storitevId":2,
-                                  "kolicina":3
-                                };
-                                sez.push(objekt1);
-                                localStorage.setItem('seznamStoritev',JSON.stringify(sez));*/
+                                 
                                   $(".dropdown").on("show.bs.dropdown", function(event){
                                     var element = $("#dropdown-kosarica");
                                     element.empty();
@@ -130,7 +119,7 @@ $data = $dao->getUporabnik("'" . $uporabnisko_ime . "'");
                                         element.append(template);
                                     }else {
                                       for (var i = 0; i < storitve.length; i++) {
-                                        //var idStoritve = storitve[i].storitevId;
+                                        var ime = storitve[i].ime;
                                         var idStoritve=storitve[i].storitevId;
                                          var kolicina = storitve[i].kolicina;
 
@@ -140,7 +129,7 @@ $data = $dao->getUporabnik("'" . $uporabnisko_ime . "'");
                                         "<li>\
                                           <a>\
                                             <div class=\"col-md-11\">\
-                                              <div>"+idStoritve+"</div>\
+                                              <div>"+ime+"</div>\
                                               <div>Količina: "+kolicina+"</div>\
                                             </div>\
                                             <a class=\"fa fa-trash\" onclick=\"deleteItem("+idStoritve+")\" role=\"button\"></a>\
@@ -165,7 +154,8 @@ $data = $dao->getUporabnik("'" . $uporabnisko_ime . "'");
                               var oldItems = JSON.parse(localStorage.getItem('seznamStoritev'));
                               //var val = _.findWhere(oldItems, {storitevId: idStoritve});
                               var arr = _.without(oldItems, _.findWhere(oldItems, {storitevId: idStoritve}));
-                              localStorage.setItem('seznamStoritev', arr);
+                              localStorage.setItem('seznamStoritev', JSON.stringify(arr));
+
                             }
                             
                           </script>                  
