@@ -74,6 +74,19 @@
 			return json_encode($rows);
 		}
 
+		public function getUporabnik($uporabnisko_ime) {
+			$sth = $this->conn->prepare(
+				'SELECT * FROM Uporabnik WHERE uporabnisko_ime = ' . $uporabnisko_ime
+			);
+			$sth->execute();
+
+			$rows = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+			$returnValue = array();
+
+			return json_encode($rows);
+		}
+
 		
 		public function addNarocilo($uporabnikId, $casStoritve) {
 			$time_stamp = date('Y-m-d H:i:s');
@@ -135,18 +148,7 @@
 			$sth->execute();
 		}
 
-		public function getUporabnik($uporabnisko_ime) {
-			$sth = $this->conn->prepare(
-				'SELECT * FROM Uporabnik WHERE uporabnisko_ime = ' . $uporabnisko_ime
-			);
-			$sth->execute();
-
-			$rows = $sth->fetchAll(PDO::FETCH_ASSOC);
-
-			$returnValue = array();
-
-			return json_encode($rows);
-		}
+		
 
 	}
 ?>

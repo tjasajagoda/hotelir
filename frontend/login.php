@@ -1,14 +1,6 @@
 <?php
-if(isset($_COOKIE["novak_janez"])) {
-      header("Location: ./index.html"); /* Redirect browser */
-      exit();
-} 
-
-if(isset($_POST['submitBtn'])) {
-  require("../api/checkCookie.php");
-}
+require("../api/checkCookie.php");
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -48,13 +40,13 @@ if(isset($_POST['submitBtn'])) {
   <div class="login-box-body">
     <p class="login-box-msg">Vpiši se v Hotelirja</p>
 
-    <form action="" method="post">
+    <form action="" method="post" id="loginForm">
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Uporabniško ime">
+        <input id="username" type="username" class="form-control" placeholder="Uporabniško ime">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Geslo">
+        <input id="password" type="password" class="form-control" placeholder="Geslo">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
@@ -103,6 +95,49 @@ if(isset($_POST['submitBtn'])) {
       radioClass: 'iradio_square-blue',
       increaseArea: '20%' /* optional */
     });
+
+    $('#loginForm').submit(function(e) {
+      e.preventDefault();
+      console.log("Login was requsted...");
+      var url = '../api/getUporabnik.php';
+      $.ajax({
+          type: 'GET',
+          url: url,
+          data: { 'uporabnisko_ime': $('#username').val()
+                },
+          success: function(data) {
+
+            if (data != "[]") {
+              var jsonArr = $.parseJSON(data)[0];
+              var username = jsonArr.uporabnisko_ime;
+              var password = jsonArr.geslo;
+              var name = jsonArr.ime;
+              var priimek = jsonArr.priimek;
+
+
+              
+              if (($('#username').val() == username) && ($('#password').val() == password)) {
+                document.cookie = "hash="+username+"; path=/";
+                window.location.replace("index.php");
+
+              }
+              
+              else {
+                window.location.replace("./login.php");
+              }
+
+            
+            }
+
+            else {
+              alert("Vpiši pravilne podatke");
+            }
+            
+
+
+          }
+      });
+      });
   });
 </script>
 </body>

@@ -1,13 +1,35 @@
 <?php
-$cookie_name = "novak_janez";
-$cookie_value = md5($cookie_name . "novak");
+
+if (!isset($_COOKIE['hash'])) {
+	if ("login.php" != substr($_SERVER['REQUEST_URI'], -9)) {
+		header("Location: ./login.php"); /* Redirect browser */
+		exit();
+	}
+
+}
+
+else {
+	require("MySQLDao.php");
+	$dao = new MySQLDao();
+	$uporabnisko_ime = $_COOKIE['hash'];
+	$data = $dao->getUporabnik("'" . $uporabnisko_ime . "'");
+	$dao->closeConnection();
 
 
-    if(!isset($_COOKIE[$cookie_name])) {
-    	setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
-    	header("Location: ./index.html"); /* Redirect browser */
-      exit();
-	} 
+	if (json_decode($data, true)[0]['uporabnisko_ime'] != $uporabnisko_ime) {
+		header("Location: ./login.php"); /* Redirect browser */
+		exit();
+	}
+
+	else {
+		header("Location: ./index.php"); /* Redirect browser */
+		exit();
+	}
+
+	
+}
+
+
 
 
 
