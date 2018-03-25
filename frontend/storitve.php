@@ -542,14 +542,14 @@ require("../api/checkCookie.php");
     </section>
 
     <script>
-      var oldItems = []
-      $(document).ready(function()){
+      var oldItems = [];
+      $(document).ready(function(){
         if(localStorage.getItem('seznamStoritev') != null){
           // if (localStorage.getItem('seznamStoritev'))
           try {
             oldItems = JSON.parse(localStorage.getItem('seznamStoritev'));
           } catch(e) {
-            oldItems = []
+            oldItems = [];
           }
           // oldItems = JSON.parse()
         }
@@ -586,7 +586,7 @@ require("../api/checkCookie.php");
               }
             }
         });
-      };
+      });
 
     function addItem(id, ime){
       console.log(id,ime);
@@ -611,7 +611,7 @@ require("../api/checkCookie.php");
     }
 
     function prikaziOpis(opis){
-    console.log(opis);
+      console.log(opis);
     }
 
     </script>
