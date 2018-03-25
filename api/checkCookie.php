@@ -20,12 +20,16 @@ else {
 		header("Location: ./login.php"); /* Redirect browser */
 		exit();
 	}
-/*
+
+
+
 	else {
+		if ("login.php" == substr($_SERVER['REQUEST_URI'], -9)) {
 		header("Location: ./index.php");
 		exit();
 	}
-*/
+	}
+
 	
 }
 
