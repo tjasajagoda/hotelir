@@ -1,7 +1,7 @@
 <?php
 require("../api/checkCookie.php");
 ?>
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html>
 <head>
   <meta charset="utf-8">
@@ -623,7 +623,7 @@ require("../api/checkCookie.php");
         }
       }
       console.log(oldItems);
-      localStorage.setItem('seznamStoritev', oldItems)
+      localStorage.setItem('seznamStoritev', oldItems);
     }
 
     function prikaziOpis(opis){
