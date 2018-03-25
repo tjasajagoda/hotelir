@@ -42,6 +42,8 @@ $data = $dao->getUporabnik("'" . $uporabnisko_ime . "'");
 
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js" type="text/javascript"></script>
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -99,7 +101,7 @@ $data = $dao->getUporabnik("'" . $uporabnisko_ime . "'");
                           <script >
                             $(document).ready(function(){
                                $(function(){
-                                 objekt = {
+                                 /*objekt = {
                                   "storitevId":1,
                                   "kolicina":1
                                 };
@@ -110,7 +112,7 @@ $data = $dao->getUporabnik("'" . $uporabnisko_ime . "'");
                                   "kolicina":3
                                 };
                                 sez.push(objekt1);
-                                localStorage.setItem('seznamStoritev',JSON.stringify(sez));
+                                localStorage.setItem('seznamStoritev',JSON.stringify(sez));*/
                                   $(".dropdown").on("show.bs.dropdown", function(event){
                                     var element = $("#dropdown-kosarica");
                                     element.empty();
@@ -129,7 +131,7 @@ $data = $dao->getUporabnik("'" . $uporabnisko_ime . "'");
                                     }else {
                                       for (var i = 0; i < storitve.length; i++) {
                                         //var idStoritve = storitve[i].storitevId;
-                                        var idStoritve="Vino"
+                                        var idStoritve=storitve[i].storitevId;
                                          var kolicina = storitve[i].kolicina;
 
 
@@ -141,8 +143,7 @@ $data = $dao->getUporabnik("'" . $uporabnisko_ime . "'");
                                               <div>"+idStoritve+"</div>\
                                               <div>Količina: "+kolicina+"</div>\
                                             </div>\
-                                            <button class=\"fa fa-trash\" >\
-                                            </button>\
+                                            <a class=\"fa fa-trash\" onclick=\"deleteItem("+idStoritve+")\" role=\"button\"></a>\
                                           </a>\
                                         </li>";
 
@@ -154,9 +155,21 @@ $data = $dao->getUporabnik("'" . $uporabnisko_ime . "'");
                                       }
                                     }
                                   });
-                               })
+                               });
+
+
                           });
-                          </script>
+
+                            function deleteItem(idStoritve){
+                              //alert("click");
+                              var oldItems = JSON.parse(localStorage.getItem('seznamStoritev'));
+                              //var val = _.findWhere(oldItems, {storitevId: idStoritve});
+                              var arr = _.without(oldItems, _.findWhere(oldItems, {storitevId: idStoritve}));
+                              localStorage.setItem('seznamStoritev', arr);
+                            }
+                            
+                          </script>                  
+
                       </ul>
                     </li>
                   </ul>
@@ -338,6 +351,7 @@ $data = $dao->getUporabnik("'" . $uporabnisko_ime . "'");
 
 <script >
   $(document).ready(function(){
+
     // var element = $("#seznamStoritev");
     // for (var i = 0; i < 5; i++) {
     //   var icon = "fa fa-taxi";
