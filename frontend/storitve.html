@@ -543,7 +543,12 @@
       $(document).ready(function(){
         if(localStorage.getItem('seznamStoritev') != null){
           // if (localStorage.getItem('seznamStoritev'))
-          oldItems = JSON.parse(localStorage.getItem('seznamStoritev'))
+          try {
+            oldItems = JSON.parse(localStorage.getItem('seznamStoritev'));
+          } catch(e) {
+            oldItems = []
+          }
+          // oldItems = JSON.parse()
         }
         else{
           localStorage.setItem('seznamStoritev',[]);
