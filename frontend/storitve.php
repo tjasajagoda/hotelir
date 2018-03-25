@@ -557,23 +557,6 @@ require("../api/checkCookie.php");
           localStorage.setItem('seznamStoritev',[]);
         }
         var data = []
-        // var element = $("#seznamStoritev");
-        // for (var i = 0; i < 5; i++) {
-        //   var icon = "fa fa-taxi";
-        //   var template ="<div class=\"col-sm-4 col-md-3\">\
-        //   <div class=\"thumbnail\">\
-        //     <img src=\"dist/img/jajca.jpg\" style=\"height:200px!important;\">\
-        //     <div class=\"caption\">\
-        //       <h3>Jajca  </h3>\
-        //       <p>z slanino</p>\
-        //       <p>Cena: <b>6€</b></p>\
-        //       <p><a class=\"btn btn-primary\" onclick=\"addItem("+data[i].id+")\" role=\"button\">Dodaj v košarico</a>\
-        //        <a class=\"btn btn-default\" onclick=\"prikaziOpis("+data[i].opis+")\" role=\"button\">Podrobnosti</a></p>\
-        //     </div>\
-        //   </div>\
-        // </div>";
-        //   element.append(template);
-        // }
         $.ajax({
             type: 'GET',
             url: '../api/getStoritve.php?kategorijaId='+location.search.split('kategorijaId=')[1],
@@ -606,6 +589,7 @@ require("../api/checkCookie.php");
       });
 
     function addItem(id, ime){
+      console.log(id,ime);
       var val = _.findWhere(oldItems, {storitevId: id});
       if(val === undefined){
         objekt = {
