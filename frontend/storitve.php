@@ -597,7 +597,7 @@ require("../api/checkCookie.php");
           "storitevId":id,
           "kolicina":1
         }
-        oldItems.push(JSON.stringify(objekt));
+        oldItems.push(objekt);
       }
       else{
         for (var i = 0; i < oldItems.length; i++) {
@@ -607,7 +607,7 @@ require("../api/checkCookie.php");
         }
       }
       console.log(oldItems);
-      localStorage.setItem('seznamStoritev', oldItems);
+      localStorage.setItem('seznamStoritev', JSON.stringify(oldItems));
     }
 
     function prikaziOpis(opis){
