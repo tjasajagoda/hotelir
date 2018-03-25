@@ -1,7 +1,7 @@
 <?php
 require("../api/checkCookie.php");
 ?>
-<!-- <!DOCTYPE html> -->
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -594,7 +594,7 @@ require("../api/checkCookie.php");
                   <div class=\"caption\">\
                     <h4>"+data[i].ime+"  </h4>\
                     <p>Cena: <b>"+data[i].cena+"</b></p>\
-                    <p><a class=\"btn btn-primary\" onclick=\"addItem("+data[i].id+","+data[i].ime+")\" role=\"button\">Dodaj v košarico</a>\
+                    <p><a class=\"btn btn-primary\" onclick=\"addItem("+data[i].id+",\""+data[i].ime+"\")\" role=\"button\">Dodaj v košarico</a>\
                      <a class=\"btn btn-default\" onclick=\"prikaziOpis("+data[i].opis+")\" role=\"button\">Podrobnosti</a></p>\
                   </div>\
                 </div>\
