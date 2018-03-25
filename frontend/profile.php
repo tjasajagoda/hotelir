@@ -1,6 +1,6 @@
 <?php
-
-  require("../api/MySQLDao.php");
+  require("../api/checkCookie.php");
+  
   $dao = new MySQLDao();
   $uporabnisko_ime = $_COOKIE['hash'];
   $data = $dao->getUporabnik("'" . $uporabnisko_ime . "'");
