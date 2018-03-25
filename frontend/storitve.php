@@ -597,7 +597,7 @@ require("../api/checkCookie.php");
           "storitevId":id,
           "kolicina":1
         }
-        oldItems.push(objekt);
+        oldItems.push(JSON.stringify(objekt));
       }
       else{
         for (var i = 0; i < oldItems.length; i++) {
