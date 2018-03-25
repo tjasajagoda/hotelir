@@ -541,9 +541,14 @@
     <script>
       var oldItems = []
       $(document).ready(function(){
-        if(localStorage.getItem('seznamStoritev') !== undefined){
-          console.log(localStorage.getItem('seznamStoritev'));
-          oldItems = JSON.parse(localStorage.getItem('seznamStoritev'))
+        if(localStorage.getItem('seznamStoritev') != null){
+          // if (localStorage.getItem('seznamStoritev'))
+          try {
+            oldItems = JSON.parse(localStorage.getItem('seznamStoritev'));
+          } catch(e) {
+            oldItems = []
+          }
+          // oldItems = JSON.parse()
         }
         else{
           localStorage.setItem('seznamStoritev',[]);
@@ -570,7 +575,12 @@
             type: 'GET',
             url: '../api/getStoritve.php?kategorijaId='+location.search.split('kategorijaId=')[1],
             success: function(json) {
-              data = (JSON.parse(json));
+              try {
+                data = JSON.parse(json);
+              } catch(e) {
+                data = []
+              }
+              // data = (JSON.parse(json));
               console.log(data);
               var element = $("#seznamStoritev");
               for (var i = 0; i < data.length; i++) {
