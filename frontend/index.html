@@ -64,9 +64,19 @@
         <ul class="nav navbar-nav">          
           <!-- Notifications: style can be found in dropdown.less -->
           <li class="dropdown notifications-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="kosarica-st">
               <i class="fa fa-shopping-basket"></i>
-              <span class="label label-warning">10</span>
+
+              <script >
+                var storitve = JSON.parse(localStorage.getItem('seznamStoritev'));
+                var st = storitve.length;
+                 var element = $("#kosarica-st");
+                if(st>0){
+                  var template="<span class=\"label label-warning\" >"+st+"</span>";
+                  element.append(template);
+                }
+               
+              </script>              
             </a>
             <ul class="dropdown-menu">
               <li class="header">Košarica</li>
@@ -79,10 +89,22 @@
                           <script >
                             $(document).ready(function(){
                                $(function(){
+                                 objekt = {
+                                  "storitevId":1,
+                                  "kolicina":1
+                                };
+                                var sez = [];
+                                sez.push(objekt);
+                                objekt1 = {
+                                  "storitevId":2,
+                                  "kolicina":3
+                                };
+                                sez.push(objekt1);
+                                localStorage.setItem('seznamStoritev',JSON.stringify(sez));
                                   $(".dropdown").on("show.bs.dropdown", function(event){
                                     var element = $("#dropdown-kosarica");
                                     element.empty();
-                                     var storitve = JSON.parse(localStorage.getItem('seznamStoritev'))
+                                    var storitve = JSON.parse(localStorage.getItem('seznamStoritev'))
                                     
 
                                     if(storitve == null){
@@ -96,14 +118,21 @@
                                         element.append(template);
                                     }else {
                                       for (var i = 0; i < storitve.length; i++) {
-                                        var ime = storitve[i].storitevId;
+                                        //var idStoritve = storitve[i].storitevId;
+                                        var idStoritve="Vino"
+                                         var kolicina = storitve[i].kolicina;
                                      
 
 
                                         var template = 
                                         "<li>\
-                                          <a href=\"#\">\
-                                          <i class=\"fa fa-users text-aqua\"></i>" +ime+"\
+                                          <a>\
+                                            <div class=\"col-md-11\">\
+                                              <div>"+idStoritve+"</div>\
+                                              <div>Količina: "+kolicina+"</div>\
+                                            </div>\
+                                            <button class=\"fa fa-trash\" >\
+                                            </button>\
                                           </a>\
                                         </li>";
 
