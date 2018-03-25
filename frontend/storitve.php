@@ -350,7 +350,7 @@ $dao = new MySQLDao();
                   <img src=\".."+data[i].slika+"\" style=\"height:200px!important;\">\
                   <div class=\"caption\">\
                     <h4>"+data[i].ime+"  </h4>\
-                    <p>Cena: <b>"+data[i].cena+"</b></p>\
+                    <p>Cena: <b>"+data[i].cena+" EUR</b></p>\
                     <p><a class=\"btn btn-primary\" onclick=\"addItem("+data[i].id+",'" +data[i].ime+"')\" role=\"button\">Dodaj v košarico</a>\
                      <a class=\"btn btn-default\" onclick=\"prikaziOpis("+data[i].opis+")\" role=\"button\">Podrobnosti</a></p>\
                   </div>\
