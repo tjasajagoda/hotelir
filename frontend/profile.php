@@ -11,6 +11,14 @@
 
   $arrHotel = json_decode($data, true)[0];
 
+  $data = $dao->getNarocila("'" . $arr['id'] . "'");
+
+  $arrNarocila = json_decode($data, true);
+
+
+
+  
+
 ?>
 
 
@@ -395,7 +403,7 @@
         Podatki o uporabniku
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Domov</a></li>
         <li class="active">Podatki o uporabniku</li>
       </ol>
     </section>
@@ -430,42 +438,34 @@
           <table class="table table-striped">
             <thead>
             <tr>
-              <th>Količina</th>
-              <th>Št. naročila</th>
-              <th>Serial #</th>
-              <th>Opis</th>
+              <th># naroč.</th>
+              <th>Ime storitve</th>
+              <th>Kategorija</th>
+              <th>Datum naročila</th>
               <th>Znesek</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>1</td>
-              <td>Call of Duty</td>
-              <td>455-981-221</td>
-              <td>El snort testosterone trophy driving gloves handsome</td>
-              <td>$64.50</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Need for Speed IV</td>
-              <td>247-925-726</td>
-              <td>Wes Anderson umami biodiesel</td>
-              <td>$50.00</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Monsters DVD</td>
-              <td>735-845-642</td>
-              <td>Terry Richardson helvetica tousled street art master</td>
-              <td>$10.70</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Grown Ups Blue Ray</td>
-              <td>422-568-642</td>
-              <td>Tousled lomo letterpress</td>
-              <td>$25.99</td>
-            </tr>
+            <?php
+              
+              $skupniDolg = 0;
+
+              foreach ($arrNarocila as $value) {
+                echo "<tr>";
+                echo "<td>" . $value['Narocilo_id'] . "</td>";
+                echo "<td>" . $value['ime_storitve'] . "</td>";
+                echo "<td> <i class='".$value['slika_kategorije']."'></i> " . $value['ime_kategorije'] . "</td>";
+
+                $date = new DateTime($value['cas_narocila']);
+
+                echo "<td>" . $date->format('m.d.Y (H:i:s)') . "</td>";
+                echo "<td>" . $value['cena'] . " EUR</td>";
+                echo "</tr>";
+
+                $skupniDolg += floatval($value['cena']);
+              }
+              
+            ?>
             </tbody>
           </table>
         </div>
@@ -483,8 +483,7 @@
           <img src="dist/img/credit/paypal2.png" alt="Paypal">
 
           <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg
-            dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
+            Račun je možno poravnati na recepciji oziroma preko spletnega plačila.
           </p>
         </div>
         <!-- /.col -->
@@ -495,15 +494,15 @@
             <table class="table">
               <tr>
                 <th style="width:50%">Znesek:</th>
-                <td>$250.30</td>
+                <td><?php echo $skupniDolg; ?> EUR</td>
               </tr>
               <tr>
                 <th>DDV (9.5%)</th>
-                <td>$10.34</td>
+                <td><?php echo $skupniDolg/100*9.5 ?> EUR</td>
               </tr>
               <tr>
                 <th>Za plačilo:</th>
-                <td>$265.24</td>
+                <td><?php echo $skupniDolg + ($skupniDolg/100*9.5) ?> EUR</td>
               </tr>
             </table>
           </div>
@@ -516,7 +515,7 @@
       <div class="row no-print">
         <div class="col-xs-12">
           <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Natisni</a>
-          <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Potrdi plačilo
+          <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Plačaj
           </button>
           <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
             <i class="fa fa-download"></i> Generiraj PDF
