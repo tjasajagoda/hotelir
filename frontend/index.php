@@ -1,3 +1,7 @@
+<?php
+require("../api/checkCookie.php");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
