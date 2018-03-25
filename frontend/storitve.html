@@ -575,7 +575,12 @@
             type: 'GET',
             url: '../api/getStoritve.php?kategorijaId='+location.search.split('kategorijaId=')[1],
             success: function(json) {
-              data = (JSON.parse(json));
+              try {
+                data = JSON.parse(json);
+              } catch(e) {
+                data = []
+              }
+              // data = (JSON.parse(json));
               console.log(data);
               var element = $("#seznamStoritev");
               for (var i = 0; i < data.length; i++) {
