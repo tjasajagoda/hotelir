@@ -1,7 +1,6 @@
 <?php
 require("../api/checkCookie.php");
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -595,7 +594,7 @@ require("../api/checkCookie.php");
                   <div class=\"caption\">\
                     <h4>"+data[i].ime+"  </h4>\
                     <p>Cena: <b>"+data[i].cena+"</b></p>\
-                    <p><a class=\"btn btn-primary\" onclick=\"addItem("+data[i].id+","+data[i].ime+")\" role=\"button\">Dodaj v košarico</a>\
+                    <p><a class=\"btn btn-primary\" onclick=\"addItem("+data[i].id+",\""+data[i].ime+"\")\" role=\"button\">Dodaj v košarico</a>\
                      <a class=\"btn btn-default\" onclick=\"prikaziOpis("+data[i].opis+")\" role=\"button\">Podrobnosti</a></p>\
                   </div>\
                 </div>\
@@ -606,10 +605,11 @@ require("../api/checkCookie.php");
         });
       });
 
-    function addItem(id){
+    function addItem(id, ime){
       var val = _.findWhere(oldItems, {storitevId: id});
       if(val === undefined){
         objekt = {
+          "ime":ime,
           "storitevId":id,
           "kolicina":1
         }
@@ -618,13 +618,14 @@ require("../api/checkCookie.php");
       else{
         for (var i = 0; i < oldItems.length; i++) {
           if(oldItems[i].id = id){
-            oldItems[i].kolicina = oldItems[i].kolicina +=1;
+            oldItems[i].kolicina = oldItems[i].kolicina + 1;
           }
         }
       }
       console.log(oldItems);
-      localStorage.setItem('seznamStoritev', oldItems)
+      localStorage.setItem('seznamStoritev', oldItems);
     }
+
     function prikaziOpis(opis){
     console.log(opis);
     }

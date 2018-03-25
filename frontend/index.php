@@ -1,5 +1,11 @@
 <?php
 require("../api/checkCookie.php");
+
+$dao = new MySQLDao();
+$uporabnisko_ime = $_COOKIE['hash'];
+$data = $dao->getUporabnik("'" . $uporabnisko_ime . "'");
+
+  $arr = json_decode($data, true)[0];
 ?>
 
 <!DOCTYPE html>
@@ -7,7 +13,7 @@ require("../api/checkCookie.php");
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Dashboard</title>
+  <title>Hotelir</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -53,7 +59,7 @@ require("../api/checkCookie.php");
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index.html" class="logo">
+    <a href="index.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>Hot</b></span>
       <!-- logo for regular state and mobile devices -->
@@ -67,7 +73,7 @@ require("../api/checkCookie.php");
       </a>
 
       <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">          
+        <ul class="nav navbar-nav">
           <!-- Notifications: style can be found in dropdown.less -->
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="kosarica-st">
@@ -81,8 +87,8 @@ require("../api/checkCookie.php");
                   var template="<span class=\"label label-warning\" >"+st+"</span>";
                   element.append(template);
                 }
-               
-              </script>              
+
+              </script>
             </a>
             <ul class="dropdown-menu">
               <li class="header">Košarica</li>
@@ -111,10 +117,10 @@ require("../api/checkCookie.php");
                                     var element = $("#dropdown-kosarica");
                                     element.empty();
                                     var storitve = JSON.parse(localStorage.getItem('seznamStoritev'))
-                                    
+
 
                                     if(storitve == null){
-                                      var template = 
+                                      var template =
                                         "<li>\
                                           <a href=\"#\">\
                                           <i ></i>Košarica je prazna!\
@@ -127,10 +133,10 @@ require("../api/checkCookie.php");
                                         //var idStoritve = storitve[i].storitevId;
                                         var idStoritve=storitve[i].storitevId;
                                          var kolicina = storitve[i].kolicina;
-                                     
 
 
-                                        var template = 
+
+                                        var template =
                                         "<li>\
                                           <a>\
                                             <div class=\"col-md-11\">\
@@ -141,7 +147,7 @@ require("../api/checkCookie.php");
                                           </a>\
                                         </li>";
 
-                                        
+
                                         element.append(template);
 
 
@@ -163,6 +169,7 @@ require("../api/checkCookie.php");
                             }
                             
                           </script>                  
+
                       </ul>
                     </li>
                   </ul>
@@ -170,7 +177,7 @@ require("../api/checkCookie.php");
                  </ul>
                 </li>
           <!-- Tasks: style can be found in dropdown.less -->
-          
+
           <!-- User Account: style can be found in dropdown.less -->
           <!-- Control Sidebar Toggle Button -->
           <!-- <li>
@@ -183,18 +190,7 @@ require("../api/checkCookie.php");
               </li>
             </ul>
           </li> -->
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              <i class="fa fa-gears"></i>
-            </a>
-            <ul class="dropdown-menu">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Profile</a></li>
-              <!-- <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li> -->
-              <li role="presentation" class="divider"></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sign out</a></li>
-            </ul>
-          </li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Odjavi se</a></li>
         </ul>
       </div>
     </nav>
@@ -209,8 +205,8 @@ require("../api/checkCookie.php");
           <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <p><?php echo $arr['ime'] . " " . $arr['priimek']; ?></p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Dosegljiv</a>
         </div>
       </div>
       <!-- search form -->
@@ -255,25 +251,25 @@ require("../api/checkCookie.php");
           </ul>
         </li> -->
         <li >
-          <a href="#">
+          <a href="storitve.php">
             <i class="fa fa-shopping-basket"></i>
             <span>Storitve</span>
           </a>
         </li>
         <li >
-          <a href="#">
+          <a href="profile.php">
             <i class="fa fa-user"></i>
             <span>Podatki o uporabniku</span>
           </a>
         </li>
         <li >
-          <a href="#">
+          <a href="hotel.php">
             <i class="fa fa-building"></i>
             <span>O hotelu</span>
           </a>
         </li>
         <li >
-          <a href="#">
+          <a href="contact.php">
             <i class="fa fa-info"></i>
             <span>Kontakt</span>
           </a>
@@ -286,16 +282,6 @@ require("../api/checkCookie.php");
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Dashboard
-        <small>Control panel</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
-    </section>
 
     <!-- Main content -->
     <section class="content">
@@ -404,7 +390,7 @@ require("../api/checkCookie.php");
                 <div class=\"icon\">\
                   <i class=\""+ icon +"\"></i>\
                 </div>\
-                <a href=\"storitve.html?kategorijaId="+data[i].id+"\" class=\"small-box-footer\">\
+                <a href=\"storitve.php?kategorijaId="+data[i].id+"\" class=\"small-box-footer\">\
                   Več <i class=\"fa fa-arrow-circle-right\"></i>\
                 </a>\
               </div>\
@@ -501,9 +487,9 @@ require("../api/checkCookie.php");
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
+      <b>Skupina Hotelir (Startup Weekend)</b>
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+    <strong>Copyright &copy; 2018</strong> All rights
     reserved.
   </footer>
 
